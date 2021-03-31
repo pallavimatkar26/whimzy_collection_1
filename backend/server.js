@@ -2,15 +2,18 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const dotenv = require('dotenv');
 // import mongoose from 'mongoose';
 // import data from './data';
 // import userRouter from './routers/userRouter';
 
 // const data = require('./data');
 const userRouter = require('./routers/userRouter');
-const productRouter = require('./routers/productRouter')
+const productRouter = require('./routers/productRouter');
 
+dotenv.config();
 const app = express();
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 
 mongoose.connect('mongodb://localhost/product_collections', {
